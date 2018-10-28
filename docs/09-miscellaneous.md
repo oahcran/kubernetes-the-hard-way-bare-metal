@@ -38,4 +38,4 @@ kubectl config use-context the-hard-way-metal
   > API Server requires the connectivities to Pod and Service network while it won't be possible without additional routing changes at API Server instances. The workaround might be to allow containers running on master instances installing `kubelet` and `kubeproxy` etc., similar to worker instances setup.  [GitHub Issue](https://github.com/kubernetes-incubator/metrics-server/issues/22)
 
 
-Prev: [Deploying the MetaLB](08-deploying-the-metalb.md)
+Prev: [Deploying the MetalLB](08-deploying-the-metallb.md)

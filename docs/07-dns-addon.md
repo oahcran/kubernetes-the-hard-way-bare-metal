@@ -98,4 +98,4 @@ Address 1: 10.32.0.1 kubernetes.default.svc.cluster.local
 
 Prev: [Deploying CNI Networking Plugin](06-deploying-cni-network-plugin.md)
 
-Next: [Deploying the MetaLB](08-deploying-the-metalb.md)
+Next: [Deploying the MetalLB](08-deploying-the-metallb.md)

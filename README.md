@@ -26,5 +26,5 @@ This is based on [Kubernetes The Hard Way](https://github.com/kelseyhightower/ku
 * [Bootstrapping the Worker Nodes](docs/05-bootstrapping-kubernetes-workers.md)
 * [Deploying CNI Networking Plugin](docs/06-deploying-cni-network-plugin.md)
 * [Deploying the DNS Cluster Add-on](docs/07-dns-addon.md)
-* [Deploying the MetaLB](docs/08-deploying-the-metalb.md)
+* [Deploying the MetalLB](docs/08-deploying-the-metalb.md)
 * [Miscellaneous](docs/09-miscellaneous.md)
