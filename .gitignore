@@ -24,3 +24,5 @@ configurations/*.pem
 configurations/*.csr
 configurations/*.kubeconfig
 configurations/k8s-worker*.json
+configurations/k8s-master*.json
+configurations/encryption-config.yaml

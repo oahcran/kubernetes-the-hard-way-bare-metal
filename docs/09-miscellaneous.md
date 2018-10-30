@@ -33,9 +33,48 @@ kubectl config use-context the-hard-way-metal
 
 ## Limitation
 
-* Metrics won't Work
+* [Metrics](https://github.com/kubernetes-incubator/metrics-server) won't Work
 
-  > API Server requires the connectivities to Pod and Service network while it won't be possible without additional routing changes at API Server instances. The workaround might be to allow containers running on master instances installing `kubelet` and `kubeproxy` etc., similar to worker instances setup.  [GitHub Issue](https://github.com/kubernetes-incubator/metrics-server/issues/22)
+  > [GitHub Issue](https://github.com/kubernetes-incubator/metrics-server/issues/22)
+
+  > 1. The [Aggregation Layer](https://kubernetes.io/docs/tasks/access-kubernetes-api/configure-aggregation-layer/) is required
+
+  > 2. The connectivities to Pod and Service network is required by API Server, while it won't be possible without additional routing changes at API Server instances. The solution is to add master instances to cluster nodes that allow containers running on master where CNI network setup for API servers to talk to Pod/Service networks.
+
+## Appendix
+
+### A. Add Master to Nodes Cluster
+
+* Generate `kubelet` client certificates for master instances. Distribute appropriate files to the instance.
+* Follow the [Bootstrapping the Worker Nodes](05-bootstrapping-kubernetes-workers.md) to complete the steps on Master instances.
+* Label the master with `node-role.kubernetes.io/master=""``
+* Taints the masters with `node-role.kubernetes.io/master:NoSchedule`
+
+```
+kubectl label node k8s-master-1 node-role.kubernetes.io/master=""
+
+kubectl taint nodes k8s-master-1 node-role.kubernetes.io/master="":NoSchedule
+
+kubectl get nodes
+
+NAME           STATUS   ROLES    AGE   VERSION
+k8s-master-1   Ready    master   1d    v1.11.4
+k8s-master-2   Ready    master   23h   v1.11.4
+k8s-master-3   Ready    master   23h   v1.11.4
+k8s-worker-1   Ready    <none>   2d    v1.11.4
+k8s-worker-2   Ready    <none>   2d    v1.11.4
+k8s-worker-3   Ready    <none>   2d    v1.11.4
+```
+
+### B. Kubernetes Conformance Testing
+
+Use [Heptio Sonobuoy](https://github.com/heptio/sonobuoy) to validate the Kubernetes cluster. The quickest way to get started is to use its browser-based [Sonobuoy Scanner tool](https://scanner.heptio.com/). The scan results is very comprehensive to list all the test cases performed and detailed trace for failed cases.
+
+With Appendix A enabled, the scan results all passed.
+
+![Scan Test 1](images/sonobuoy-scan-results-1.png)
+
+![Scan Test 2](images/sonobuoy-scan-results-2.png)
 
 
 Prev: [Deploying the MetalLB](08-deploying-the-metallb.md)
