@@ -60,12 +60,22 @@ data:
           upstream
           fallthrough in-addr.arpa ip6.arpa
         }
+        hosts k8s.hosts {
+          172.18.30.21 k8s-master-1
+          172.18.30.22 k8s-master-2
+          172.18.30.23 k8s-master-3
+          172.18.30.31 k8s-worker-1
+          172.18.30.32 k8s-worker-2
+          172.18.30.33 k8s-worker-3
+          fallthrough
+        }
         prometheus :9153
         proxy . /etc/resolv.conf
         cache 30
         loop
         reload
         loadbalance
+        log
     }
 ---
 apiVersion: extensions/v1beta1

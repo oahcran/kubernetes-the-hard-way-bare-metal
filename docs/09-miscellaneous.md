@@ -33,7 +33,7 @@ kubectl config use-context the-hard-way-metal
 
 ## Limitation
 
-* [Metrics](https://github.com/kubernetes-incubator/metrics-server) won't Work
+* [Metrics Server](https://github.com/kubernetes-incubator/metrics-server) won't Work
 
   > [GitHub Issue](https://github.com/kubernetes-incubator/metrics-server/issues/22)
 
@@ -75,6 +75,12 @@ With Appendix A enabled, the scan results all passed.
 ![Scan Test 1](images/sonobuoy-scan-results-1.png)
 
 ![Scan Test 2](images/sonobuoy-scan-results-2.png)
+
+### C. Install Metrics Server
+
+[metrics-server](https://github.com/kubernetes-incubator/metrics-server) is the popular one to replace deprecated [Heapster](https://github.com/kubernetes/heapster) to gather Prometheus-format metrics.
+
+Go to [the link](appendix-enabling-metrics-server.md) for details.
 
 
 Prev: [Deploying the MetalLB](08-deploying-the-metallb.md)

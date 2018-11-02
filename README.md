@@ -13,9 +13,10 @@ This is based on [Kubernetes The Hard Way](https://github.com/kelseyhightower/ku
 * Flannel v0.9.1
 * docker-ce 18.06.1-ce
 * CoreDNS v1.2.5
+* Ubuntu 18.04.1 LTS
 * MetalLB v0.7.3
 * Nginx 1.14.0
-* Ubuntu 18.04.1 LTS
+* metrics-server v0.3.1 (Appendix)
 
 ## Steps
 
