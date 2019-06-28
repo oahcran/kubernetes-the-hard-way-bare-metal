@@ -6,17 +6,17 @@ This is based on [Kubernetes The Hard Way](https://github.com/kelseyhightower/ku
 
 ## Cluster Details
 
-* Kubernetes v1.11.4
-* etcd v3.3.10
-* cri-tools v1.11.1
-* CNI v0.6.0
-* Flannel v0.9.1
-* docker-ce 18.06.1-ce
-* CoreDNS v1.2.5
-* Ubuntu 18.04.1 LTS
-* MetalLB v0.7.3
-* Nginx 1.14.0
-* metrics-server v0.3.1 (Appendix)
+* Kubernetes `v1.14.3`
+* etcd `v3.3.13`
+* cri-tools `v1.14.0`
+* CNI `v0.7.5`
+* Flannel `v0.11.0`
+* docker-ce `18.06.3~ce~3-0~ubuntu`
+* CoreDNS `v1.5.0`
+* Ubuntu `16.04.6 LTS`
+* MetalLB `v0.7.3`
+* Nginx `1.14.0`
+* metrics-server `v0.3.3` (Miscellaneous)
 
 ## Steps
 
@@ -27,5 +27,9 @@ This is based on [Kubernetes The Hard Way](https://github.com/kelseyhightower/ku
 * [Bootstrapping the Worker Nodes](docs/05-bootstrapping-kubernetes-workers.md)
 * [Deploying CNI Networking Plugin](docs/06-deploying-cni-network-plugin.md)
 * [Deploying the DNS Cluster Add-on](docs/07-dns-addon.md)
-* [Deploying the MetalLB](docs/08-deploying-the-metalb.md)
+* [Deploying the MetalLB](docs/08-deploying-the-metallb.md)
 * [Miscellaneous](docs/09-miscellaneous.md)
+
+## Change Log
+
+* [Change Log](docs/change-log.md)

@@ -74,7 +74,7 @@ ExecStart=/usr/local/bin/kube-apiserver \\
   --authorization-mode=Node,RBAC \\
   --bind-address=0.0.0.0 \\
   --client-ca-file=/var/lib/kubernetes/ca.pem \\
-  --enable-admission-plugins=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \\
+  --enable-admission-plugins=NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \\
   --enable-swagger-ui=true \\
   --etcd-cafile=/var/lib/kubernetes/ca.pem \\
   --etcd-certfile=/var/lib/kubernetes/kubernetes.pem \\
@@ -151,10 +151,10 @@ kubectl create -f deployments/metrics-server/
 $ kubectl top nodes
 
 NAME           CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-k8s-master-1   172m         8%     1578Mi          41%
-k8s-master-2   168m         8%     1589Mi          41%
-k8s-master-3   235m         11%    1604Mi          41%
-k8s-worker-1   93m          4%     939Mi           24%
-k8s-worker-2   104m         5%     771Mi           20%
-k8s-worker-3   98m          4%     1032Mi          26%
+k8s-master-1   127m         6%     1741Mi          45%
+k8s-master-2   134m         6%     1475Mi          38%
+k8s-master-3   125m         6%     1627Mi          42%
+k8s-worker-1   78m          3%     794Mi           20%
+k8s-worker-2   100m         5%     774Mi           20%
+k8s-worker-3   78m          3%     831Mi           21%
 ```

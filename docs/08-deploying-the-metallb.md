@@ -64,11 +64,11 @@ kubectl get pods -n metallb-system
 > Output
 
 ```
-NAME                        READY     STATUS    RESTARTS   AGE
-controller-9c57dbd4-rt9st   1/1       Running   0          2m
-speaker-2ph9n               1/1       Running   0          2m
-speaker-4vxg8               1/1       Running   0          2m
-speaker-dstn9               1/1       Running   0          2m
+NAME                         READY   STATUS    RESTARTS   AGE
+controller-cd8657667-cb4kz   1/1     Running   0          42s
+speaker-dcn7d                1/1     Running   0          42s
+speaker-rx2fr                1/1     Running   0          42s
+speaker-tptms                1/1     Running   0          42s
 ```
 
 Run nginx and expose service of LoadBalancer type:
@@ -88,8 +88,8 @@ kubectl get svc
 
 ```
 NAME         TYPE           CLUSTER-IP   EXTERNAL-IP     PORT(S)        AGE
-kubernetes   ClusterIP      10.32.0.1    <none>          443/TCP        4h
-nginx        LoadBalancer   10.32.0.7    172.18.30.100   80:31676/TCP   6s
+kubernetes   ClusterIP      10.32.0.1    <none>          443/TCP        4h52m
+nginx        LoadBalancer   10.32.0.41   172.18.30.100   80:30346/TCP   6s
 ```
 
 Run `curl 172.18.30.100:80` to get nginx welcome page:

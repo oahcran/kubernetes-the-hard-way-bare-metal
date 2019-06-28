@@ -2,7 +2,7 @@
 
 Follow the [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) and changes made to comply to [Network/Compute Design](01-preparing-resources.md).
 
-All the configuration file put to `configuration` folder. Run the `generate-configs.sh` to generate certificate, private key and configuration files.
+All the configuration file put to `configuration` folder. Run the `script-generate-configs.sh` to generate certificate, private key and configuration files.
 
 ## Certificate Authority
 
