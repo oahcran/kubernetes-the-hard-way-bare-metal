@@ -27,7 +27,7 @@ Setup a subnet for infra network and no firewall for internal/external communica
 
 ## Operating System
 
-**Ubuntu 18.04.1 LTS**
+**Ubuntu 16.04.6 LTS**
 
 Update each instance `/etc/hosts` file:
 

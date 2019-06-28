@@ -14,10 +14,10 @@ Download the official Kubernetes release binaries:
 
 ```
 wget -q --show-progress --https-only --timestamping \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kube-apiserver" \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kube-controller-manager" \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kube-scheduler" \
-  "https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kubectl"
+  "https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kube-apiserver" \
+  "https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kube-controller-manager" \
+  "https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kube-scheduler" \
+  "https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubectl"
 ```
 
 Install the Kubernetes binaries:
@@ -67,7 +67,7 @@ ExecStart=/usr/local/bin/kube-apiserver \\
   --authorization-mode=Node,RBAC \\
   --bind-address=0.0.0.0 \\
   --client-ca-file=/var/lib/kubernetes/ca.pem \\
-  --enable-admission-plugins=Initializers,NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \\
+  --enable-admission-plugins=NamespaceLifecycle,NodeRestriction,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota \\
   --enable-swagger-ui=true \\
   --etcd-cafile=/var/lib/kubernetes/ca.pem \\
   --etcd-certfile=/var/lib/kubernetes/kubernetes.pem \\
@@ -150,7 +150,7 @@ Create the `kube-scheduler.yaml` configuration file:
 
 ```
 cat <<EOF | sudo tee /etc/kubernetes/config/kube-scheduler.yaml
-apiVersion: componentconfig/v1alpha1
+apiVersion: kubescheduler.config.k8s.io/v1alpha1
 kind: KubeSchedulerConfiguration
 clientConnection:
   kubeconfig: "/var/lib/kubernetes/kube-scheduler.kubeconfig"
@@ -196,12 +196,12 @@ kubectl --kubeconfig admin.kubeconfig get componentstatuses
 ```
 
 ```
-NAME                 STATUS    MESSAGE              ERROR
-controller-manager   Healthy   ok
+NAME                 STATUS    MESSAGE             ERROR
 scheduler            Healthy   ok
-etcd-2               Healthy   {"health": "true"}
-etcd-0               Healthy   {"health": "true"}
-etcd-1               Healthy   {"health": "true"}
+controller-manager   Healthy   ok
+etcd-2               Healthy   {"health":"true"}
+etcd-0               Healthy   {"health":"true"}
+etcd-1               Healthy   {"health":"true"}
 ```
 
 > Remember to run the above commands on each Master node. The `admin.kubeconfig` point to localhost API Server endpoint
@@ -218,7 +218,7 @@ Create the `system:kube-apiserver-to-kubelet` [ClusterRole](https://kubernetes.i
 
 ```
 cat <<EOF | kubectl apply --kubeconfig admin.kubeconfig -f -
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   annotations:
@@ -250,7 +250,6 @@ apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
   name: system:kube-apiserver
-  namespace: ""
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
@@ -322,12 +321,12 @@ curl --cacert ca.pem https://172.18.30.20:6443/version
 ```
 {
   "major": "1",
-  "minor": "11",
-  "gitVersion": "v1.11.4",
-  "gitCommit": "bf9a868e8ea3d3a8fa53cbb22f566771b3f8068b",
+  "minor": "14",
+  "gitVersion": "v1.14.3",
+  "gitCommit": "5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0",
   "gitTreeState": "clean",
-  "buildDate": "2018-10-25T19:06:30Z",
-  "goVersion": "go1.10.3",
+  "buildDate": "2019-06-06T01:36:19Z",
+  "goVersion": "go1.12.5",
   "compiler": "gc",
   "platform": "linux/amd64"
 }

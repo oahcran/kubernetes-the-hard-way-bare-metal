@@ -26,7 +26,12 @@ Install docker-ce
 
 ```
 ## Install docker.
-apt-get update && apt-get install docker-ce=18.06.1~ce~3-0~ubuntu
+apt-get update
+apt-cache policy docker-ce
+
+apt-get install docker-ce=18.06.3~ce~3-0~ubuntu
+
+apt-mark hold docker-ce
 
 # Setup daemon.
 cat > /etc/docker/daemon.json <<EOF
@@ -67,11 +72,11 @@ Install the OS dependencies:
 
 ```
 wget -q --show-progress --https-only --timestamping \
-  https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.11.1/crictl-v1.11.1-linux-amd64.tar.gz \
-  https://github.com/containernetworking/plugins/releases/download/v0.6.0/cni-plugins-amd64-v0.6.0.tgz \
-  https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kubectl \
-  https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kube-proxy \
-  https://storage.googleapis.com/kubernetes-release/release/v1.11.4/bin/linux/amd64/kubelet
+  https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.14.0/crictl-v1.14.0-linux-amd64.tar.gz \
+  https://github.com/containernetworking/plugins/releases/download/v0.7.5/cni-plugins-amd64-v0.7.5.tgz \
+  https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubectl \
+  https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kube-proxy \
+  https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubelet
 ```
 
 Create the installation directories:
@@ -95,9 +100,9 @@ Install the worker binaries:
 {
   chmod +x kubectl kube-proxy kubelet
   sudo mv kubectl kube-proxy kubelet /usr/local/bin/
-  tar -xvf crictl-v1.11.1-linux-amd64.tar.gz
+  tar -xvf crictl-v1.14.0-linux-amd64.tar.gz
   sudo mv crictl /usr/local/bin/
-  sudo tar -xvf cni-plugins-amd64-v0.6.0.tgz -C /opt/cni/bin/
+  sudo tar -xvf cni-plugins-amd64-v0.7.5.tgz -C /opt/cni/bin/
   sudo chown root:root /usr/local/bin/crictl
 }
 ```
@@ -254,10 +259,10 @@ kubectl get nodes
 > output
 
 ```
-NAME           STATUS     ROLES     AGE       VERSION
-k8s-worker-1   NotReady   <none>    32m       v1.11.4
-k8s-worker-2   NotReady   <none>    51s       v1.11.4
-k8s-worker-3   NotReady   <none>    48s       v1.11.4
+NAME           STATUS     ROLES    AGE     VERSION
+k8s-worker-1   NotReady   <none>   12m     v1.14.3
+k8s-worker-2   NotReady   <none>   5m30s   v1.14.3
+k8s-worker-3   NotReady   <none>   8s      v1.14.3
 ```
 
 The Worker nodes are `NotReady`, run `kubectl describe node k8s-worker-1` to find _network plugin is not ready_:

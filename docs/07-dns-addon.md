@@ -35,7 +35,7 @@ serviceaccount/coredns created
 clusterrole.rbac.authorization.k8s.io/system:coredns created
 clusterrolebinding.rbac.authorization.k8s.io/system:coredns created
 configmap/coredns created
-deployment.extensions/coredns created
+deployment.apps/coredns created
 service/kube-dns created
 ```
 
@@ -48,9 +48,9 @@ kubectl get pods -l k8s-app=kube-dns -n kube-system
 > output
 
 ```
-NAME                       READY     STATUS    RESTARTS   AGE
-coredns-5c64869bbf-2b6jc   1/1       Running   0          1m
-coredns-5c64869bbf-ffqbd   1/1       Running   0          1m
+NAME                       READY   STATUS    RESTARTS   AGE
+coredns-55f46dd959-bv9fh   1/1     Running   0          35s
+coredns-55f46dd959-c9blp   1/1     Running   0          35s
 ```
 
 ### Verification
@@ -70,8 +70,8 @@ kubectl get pods -l run=busybox
 > output
 
 ```
-NAME                      READY   STATUS    RESTARTS   AGE
-busybox-bd8fb7cbd-vflm9   1/1     Running   0          10s
+NAME                       READY   STATUS    RESTARTS   AGE
+busybox-68f7d47fc6-qn8ln   1/1     Running   0          17s
 ```
 
 Retrieve the full name of the `busybox` pod:
