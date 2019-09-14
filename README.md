@@ -4,7 +4,7 @@ Hands-on learning to understand the tasks required to bootstrap a Kubernetes clu
 
 This is based on [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) and [kubeadm](https://github.com/kubernetes/kubeadm) with a few extensions.
 
-Check [mini-k8s-the-hard-way](https://github.com/oahcran/mini-k8s-the-hard-way) for experiment, like [containerd](https://containerd.io/) container runtime.
+Check another repo [mini-k8s-the-hard-way](https://github.com/oahcran/mini-k8s-the-hard-way) for different purpose experiment, like [containerd](https://containerd.io/) container runtime, different type CNI plugin network add-on (`Weave Net`, etc.) and more...
 
 ## Cluster Details
 
